@@ -41,8 +41,8 @@ public class GerenciadoraClientesTest {
 		//Montagem cenário
 		int idCliente1 = 1;
 		int idCliente2 = 2;
-		Cliente c1 = new Cliente(1, "Gustavo Farias", 31, "gugafarias@gmail.com", 1, true);
-		Cliente c2 = new Cliente(2, "Felipe Augusto", 34, "felipeaugusto@gmail.com", 1, true);
+		Cliente c1 = new Cliente(idCliente1, "Gustavo Farias", 31, "gugafarias@gmail.com", 1, true);
+		Cliente c2 = new Cliente(idCliente2, "Felipe Augusto", 34, "felipeaugusto@gmail.com", 1, true);
 		
 		List<Cliente> list = new ArrayList<>();
 		list.addAll(Arrays.asList(c1, c2));
