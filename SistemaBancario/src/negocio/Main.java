@@ -102,10 +102,10 @@ public class Main {
 			} 
 			
 		}
-	
 		
+		sc.close();		
 	}
-
+	
 	private static void pulalinha() {
 		System.out.println("\n");
 	}
@@ -149,6 +149,8 @@ public class Main {
 		
 		gerClientes = new GerenciadoraClientes(clientesDoBanco);
 		gerContas = new GerenciadoraContas(contasDoBanco);
+		
+		
 		
 	}
 	
