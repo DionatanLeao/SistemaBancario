@@ -100,7 +100,7 @@ public class GerenciadoraClientesTest {
 			fail();
 		} catch (Exception e) {
 			//Verificações
-			assertThat(e.getMessage(), is(IdadeNaoPermitidaException.MSG_IDADE_INVALIDA));;
+			assertThat(e.getMessage(), is(IdadeNaoPermitidaException.MSG_IDADE_INVALIDA));
 		}
 		
 		
