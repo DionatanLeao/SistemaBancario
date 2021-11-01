@@ -3,6 +3,8 @@ package negocio;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,6 +51,19 @@ public class GerenciadoraClientesTest {
 	}
 	
 	@Test
+	public void testPesquisaClienteInexistente() {
+		
+		//Execução
+		Cliente c3 = gc.pesquisaCliente(3);
+		
+		//Verificações
+		assertNull(c3);
+		//assertThat(c3, is(false));
+		assertThat(gc.getClientesDoBanco().size(), is(2));
+		
+	}
+	
+	@Test
 	public void testRemoveCliente() {
 
 		//Execução
@@ -58,6 +73,39 @@ public class GerenciadoraClientesTest {
 		assertThat(clienteRemovido, is(true));
 		assertThat(gc.getClientesDoBanco().size(), is(idCliente1));
 		assertNull(gc.pesquisaCliente(idCliente2));
+	}
+	
+	@Test
+	public void	testClienteIdadeAceitavel() throws IdadeNaoPermitidaException {
+		
+		//Montagem do cenário
+		Cliente cliente = new Cliente(1, "Gustavo", 25, "guga@gmail.com", 1, true);
+		
+		//Execução
+		boolean idadeInvalida = gc.validaIdade(cliente.getIdade());
+		
+		//Verificações
+		assertTrue(idadeInvalida);
+		
+	}
+	@Test
+	public void	testClienteIdadeAceitavel2() throws IdadeNaoPermitidaException {
+		
+		//Montagem do cenário
+		Cliente cliente = new Cliente(1, "Gustavo", 17, "guga@gmail.com", 1, true);
+		
+		try {
+			//Execução
+			gc.validaIdade(cliente.getIdade());
+			fail();
+		} catch (Exception e) {
+			//Verificações
+			assertThat(e.getMessage(), is(IdadeNaoPermitidaException.MSG_IDADE_INVALIDA));;
+		}
+		
+		
+		
+		
 	}
 
 }

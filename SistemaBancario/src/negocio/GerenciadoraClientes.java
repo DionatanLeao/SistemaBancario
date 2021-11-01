@@ -97,8 +97,9 @@ public class GerenciadoraClientes {
 	 */
 	public boolean validaIdade(int idade) throws IdadeNaoPermitidaException {
 	
-		if(idade < 18 || idade > 65)
+		if(idade < 18 || idade > 65) {
 			throw new IdadeNaoPermitidaException(IdadeNaoPermitidaException.MSG_IDADE_INVALIDA);
+		}
 		
 		return true;
 	}
